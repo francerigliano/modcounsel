@@ -1,5 +1,5 @@
 flask
-numpy==1.21.4
+numpy==1.26.4
 pandas
 pandasai
 gunicorn
