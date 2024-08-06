@@ -7,3 +7,6 @@ services:
     envVars:
       - key: PANDASAI_API_KEY
         value: $2a$10$e68cf6iSorLhkvXjRF3Fu.97WcqplKAoZcIziy8CCHAuea7Tn0w2y
+    runtime:
+        python_version: 3.8.12
+
