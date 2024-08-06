@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: movie-search
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PANDASAI_API_KEY
+        value: $2a$10$e68cf6iSorLhkvXjRF3Fu.97WcqplKAoZcIziy8CCHAuea7Tn0w2y
