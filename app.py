@@ -20,8 +20,15 @@ def index():
         query = request.form['query']
         # Usar el agente de PandasAI para buscar
         result = agent.chat(query)
-        return render_template('index.html', query=query, results=result)
-    return render_template('index.html', query='', results='')
+        
+        # Convertir el resultado a una lista de títulos si es un DataFrame
+        if isinstance(result, pd.DataFrame):
+            results = result['Movie Title'].tolist()
+        else:
+            results = [result]  # Para resultados no DataFrame
+        
+        return render_template('index.html', query=query, results=results)
+    return render_template('index.html', query='', results=[])
 
 if __name__ == '__main__':
     app.run(debug=True)
