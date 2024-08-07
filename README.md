@@ -1,19 +1,23 @@
 This is a Master File for ModCounsel technical challenge. In this challenge, a search bar was designed and built using a large language model with the PandasAI library (https://docs.pandas-ai.com/intro). This library allows for quick and efficient prototyping using the provided Excel file. It is a generative AI model that understands and interprets natural language queries and translates them into Python code and SQL queries. It then uses the code to interact with the data and return the results to the user. The same Excel file is previously processed with the following Python code in a Jupyter Notebook.
 
-python
+import pandas as pd
 
 def clean_data(df):
-    for column in df.columns:
-        if df[column].dtype == 'object':
-            df[column] = df[column].str.replace(',', '')
-    df['Release Year'] = pd.to_numeric(df['Release Year'], errors='coerce')
-    df['Budget (millions $)'] = pd.to_numeric(df['Budget (millions $)'], errors='coerce')
-    df['Rotten Tomatoes Score'] = pd.to_numeric(df['Rotten Tomatoes Score'], errors='coerce')
-    df.dropna(inplace=True)
-    return df
+	for column in df.columns:
+		if df[column].dtype == 'object':
+		df[column] = df[column].str.replace(',', '')
+		df['Release Year'] = pd.to_numeric(df['Release Year'], 				errors='coerce')
+		df['Budget (millions $)'] = pd.to_numeric(df['Budget (millions 		$)'], errors='coerce')
+		df['Rotten Tomatoes Score'] = pd.to_numeric(df['Rotten Tomatoes 		Score'], errors='coerce')
+		df.dropna(inplace=True)
+	return df
 
 df_cleaned = clean_data(df)
 print(df_cleaned)
+
+cleaned_file_path = 'Movie Data.xlsx'
+df_cleaned.to_excel(cleaned_file_path, index=False, engine='openpyxl')
+
 
 It is noteworthy that this library has a limit of 100 requests per query per month per account, but for the purposes of this challenge, it was considered sufficient.
 
